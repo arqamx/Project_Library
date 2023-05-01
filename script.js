@@ -78,7 +78,7 @@ let clearForm = () => {
     inputPages.value = null;
 }
 
-let createReadTd = (book) => {
+let createReadToggleBtnTd = (book) => {
     let td = document.createElement('td');
     let btn = document.createElement('button');
     btn.textContent = 'change read status';
@@ -89,3 +89,16 @@ let createReadTd = (book) => {
     td.appendChild(btn);
     return td;
 }
+
+let createDeleteBtnTd = (index) => {
+    let td = document.createElement('td');
+    let btn = document.createElement('button');
+    btn.textContent = 'Delete';
+    btn.addEventListener('click', () => {
+        myLibrary.splice(index);
+        updateTable();
+    });
+    td.appendChild(btn);
+    return td;
+}
+
