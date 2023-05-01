@@ -77,9 +77,9 @@ let toggleHiddenElements = () => {
 }
 
 let clearForm = () => {
-    inputTitle.value = null;
-    inputAuthor.value = null;
-    inputPages.value = null;
+    inputTitle.value = "";
+    inputAuthor.value = "";
+    inputPages.value = "";
 }
 
 let createReadToggleBtnTd = (book) => {
