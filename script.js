@@ -102,3 +102,20 @@ let createDeleteBtnTd = (index) => {
     return td;
 }
 
+let updaateTable = () => {
+    tbody.textContent = '';
+
+    myLibrary.forEach((book, index) => {
+        let tr = document.createElement('tr');
+        Object.keys(book).forEach(prop => {
+            let td = document.createElement('td');
+            td.textContent = book[prop];
+            if (prop == 'read') td.textContent = book[prop] ? 'Read' : 'Not-yet';
+            tr.appendChild(td);
+        });
+        tr.appendChild(createReadToggleBtnTd(book));
+        tr.appendChild(createDeleteBtnTd(index));
+        tbody.append(tr);
+    });
+}
+
