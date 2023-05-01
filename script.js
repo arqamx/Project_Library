@@ -57,8 +57,12 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-let addBookToLibrary = (title, author, pages, read) => {
+let addBookToLibrary = () => {
 
+    let title = inputTitle.value;
+    let author = inputAuthor.value;
+    let pages = inputPages.value;
+    let read = inputRadioRead.value;
     let newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
 }
