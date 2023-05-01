@@ -77,3 +77,15 @@ let clearForm = () => {
     inputAuthor.value = null;
     inputPages.value = null;
 }
+
+let createReadTd = (book) => {
+    let td = document.createElement('td');
+    let btn = document.createElement('button');
+    btn.textContent = 'change read status';
+    btn.addEventListener('click', () => {
+        book.read = !book.read;
+        updateTable();
+    });
+    td.appendChild(btn);
+    return td;
+}
