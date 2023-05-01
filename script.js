@@ -63,3 +63,5 @@ let addBookToLibrary = (title, author, pages, read) => {
     myLibrary.push(newBook);
 }
 
+// this arrow fuction find and store the value of book read or not in a variable
+let inputRadioRead = () => form.querySelector('input[name="read"]:checked').value;
