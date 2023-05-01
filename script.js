@@ -119,3 +119,17 @@ let updaateTable = () => {
     });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    btnAddNewBook.addEventListener('click', toggleHiddenElements);
+    btnSubmit.addEventListener('click', () => {
+        addBookToLibrary();
+        updaateTable();
+        toggleHiddenElements();
+        clearForm();
+    });
+})
+
+btnCancel.addEventListener('click', () => {
+    toggleHiddenElements();
+    clearForm();
+})
