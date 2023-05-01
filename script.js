@@ -71,3 +71,9 @@ let toggleHiddenElements = () => {
     table.classList.toggle('hidden');
     btnAddNewBook.classList.toggle('hidden');
 }
+
+let clearForm = () => {
+    inputTitle.value = null;
+    inputAuthor.value = null;
+    inputPages.value = null;
+}
