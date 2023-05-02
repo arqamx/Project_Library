@@ -105,7 +105,7 @@ let createReadToggleBtnTd = (book) => {
 let removeFromLibrary = (index) => {
     myLibrary.splice(index, 1);
     btnSubmit.removeEventListener('click', createDeleteBtnTd);
-    updaateTable();
+    updateTable();
 }
 
 let createDeleteBtnTd = (index) => {
@@ -120,7 +120,7 @@ let createDeleteBtnTd = (index) => {
     return td;
 }
 
-let updaateTable = () => {
+let updateTable = () => {
     tbody.textContent = '';
 
     myLibrary.forEach((book, index) => {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btnSubmit.addEventListener('click', () => {
         addBookToLibrary();
-        updaateTable();
+        updateTable();
         toggleHiddenElements();
         clearForm();
     });
