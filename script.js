@@ -70,6 +70,14 @@ let addBookToLibrary = () => {
 // this arrow fuction find and store the value of book read or not in a variable
 let inputRadioRead = () => form.querySelector('input[name="read"]:checked').value;
 
+let populateStorage = () => {
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
+let getStorage = () => {
+    myLibrary = JSON.parse(localStorage.getItem('library'));
+}
+
 let toggleHiddenElements = () => {
     form.classList.toggle('hidden');
     table.classList.toggle('hidden');
@@ -121,19 +129,31 @@ let updaateTable = () => {
         tr.appendChild(createDeleteBtnTd(index));
         tbody.append(tr);
     });
+    populateStorage();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     btnAddNewBook.addEventListener('click', toggleHiddenElements);
+    
     btnSubmit.addEventListener('click', () => {
         addBookToLibrary();
         updaateTable();
         toggleHiddenElements();
         clearForm();
     });
-})
 
-btnCancel.addEventListener('click', () => {
-    toggleHiddenElements();
-    clearForm();
-})
+    btnCancel.addEventListener('click', () => {
+        toggleHiddenElements();
+        clearForm();
+    });
+    
+    
+    
+    if(!localStorage.getItem('library')) {
+        populateStorage();
+    } else {
+        getStorage();
+    }
+    updateTable();
+});
+
