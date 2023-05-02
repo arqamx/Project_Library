@@ -102,12 +102,18 @@ let createReadToggleBtnTd = (book) => {
     return td;
 }
 
+let removeFromLibrary = (index) => {
+    myLibrary.splice(index, 1);
+    btnSubmit.removeEventListener('click', createDeleteBtnTd);
+    updaateTable();
+}
+
 let createDeleteBtnTd = (index) => {
     let td = document.createElement('td');
     let btn = document.createElement('button');
     btn.textContent = 'Delete';
     btn.addEventListener('click', () => {
-        myLibrary.splice(index);
+        myLibrary.splice(index, 1);
         updateTable();
     });
     td.appendChild(btn);
@@ -134,7 +140,7 @@ let updaateTable = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     btnAddNewBook.addEventListener('click', toggleHiddenElements);
-    
+
     btnSubmit.addEventListener('click', () => {
         addBookToLibrary();
         updaateTable();
