@@ -90,10 +90,10 @@ let clearForm = () => {
     inputPages.value = "";
 }
 
-let createReadToggleBtnTd = (book) => {
+let createReadToggleBtnTd = (book, readStatus) => {
     let td = document.createElement('td');
     let btn = document.createElement('button');
-    btn.textContent = 'change read status';
+    btn.textContent = readStatus;
     btn.addEventListener('click', () => {
         book.read = !book.read;
         updateTable();
@@ -124,14 +124,15 @@ let updateTable = () => {
     tbody.textContent = '';
 
     myLibrary.forEach((book, index) => {
+        let readStatus;
         let tr = document.createElement('tr');
         Object.keys(book).forEach(prop => {
             let td = document.createElement('td');
             td.textContent = book[prop];
-            if (prop == 'read') td.textContent = book[prop] ? 'Read' : 'Not-yet';
-            tr.appendChild(td);
+            if (prop == 'read') readStatus = book[prop] ? 'Read' : 'Not-yet';
+            if(prop != 'read') tr.appendChild(td);
         });
-        tr.appendChild(createReadToggleBtnTd(book));
+        tr.appendChild(createReadToggleBtnTd(book, readStatus));
         tr.appendChild(createDeleteBtnTd(index));
         tbody.append(tr);
     });
